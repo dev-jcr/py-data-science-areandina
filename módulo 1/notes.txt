@@ -1,2 +1,20 @@
 CIENCIA DE DATOS CON PYTHON:
 RECOLECCIÓN, ALMACENAMIENTO Y PROCESO
+
+Interpretado, orientado a objetos y de alto nivel
+Las funciones, como objetos, pueden ser creadas e independientes de su bloque de código original.
+
+# para comentarios
+""" para comentarios largos
+
+type()
+para obtener tipo de variable
+
+Programación
+    Estructurada
+        Se ejecuta línea tras línea
+    Orientada a objetos
+        Usa clases para ejecutar bloques de código.
+
+Recursos adicionales:
+https://docs.python.org/es/3.8/whatsnew/index.html
