@@ -1,0 +1,164 @@
+Recolección de datos: 
+Formatos y librerías especializadas (csv, xlsx, json,xml) 
+
+Ciencia de datos
+    Conjunto de conocimientos
+    en cuatro áreas para aportar valor con información
+        Estadística y matemáticas
+        Programación
+        Negocio y academia
+        Comunicación
+    Se suele aportar información mediante
+        Modelos de AI o ML
+        Dashboards (código)
+        Pipelines ETL
+        Reportes (DataViz)
+
+
+# Using with to create code in charge of closing the file
+with open ("datos.txt", "w") as d:
+    d.write("10, 20, 30")
+        
+txt
+    open()
+    .read()
+    .readline()
+
+    Exercise 2, Example of using txt
+
+    # x + 10 - 4k donde k = 10
+    n = range(30)
+    k = 10
+    with open ("datos2.txt","w") as d:
+        for x in n:
+            y = x + 10 - 4*k
+            d.write(str(y))
+            d.write("\n")
+
+    lista = []
+    with open("datos2.txt", "r") as d:
+        for y in n:
+            temp = d.readline()
+            temp = temp.strip()
+            lista.append(temp)
+    print(lista)
+
+csv processing
+    datos separados por comas (u otro símbolo)
+    Ejemplo
+    # Importando librería
+    import csv
+    # Creando lista
+    lista = []
+    # Usar with open para abrir csv con codificado correcto como objeto notas
+    with open ("notas.csv", encoding = "utf8") as notas:
+        # asignar a variable el contenido del csv reconociendo las filas
+        # mediante el método DictReader 
+        csv_datos = csv.DictReader(notas)
+        # bucle for para hacer lista con una columna
+        for i in csv_datos:
+            # Asignar a variable y reemplazar coma por punto
+            fisica = i["Fisica"].replace(",", ".")
+            # agregar fisica a lista cambiando a float
+            lista.append(float(fisica))
+    print(lista)
+
+Excel
+    Ejemplo
+    import xlrd
+    lista = []
+    with xlrd.open_workbook("notas.xls") as excel:
+        for hoja in excel.sheets():
+            for fila in range(1,hoja.nrows):
+                dato = hoja.col(3)[fila].value
+                lista.append(dato)
+    print(lista)    
+
+json
+    datos en forma de diccionario con corchetes
+    Ejemplo
+    import jsonwith open("notas.json",encoding="utf-8") as archivo:
+        datos = json.load(archivo)
+        print(datos)
+
+    Ejemplo obteniendo items indexados
+    import json
+    lista = []
+    with open("notas.json", encoding = "utf-8") as archivo:
+        datos = json.load(archivo)
+        for d in range(len(datos)):
+            print(datos[d]["Química"])
+
+xml
+    extensible markup language
+    datos dentro de etiquetas como html
+    4 paquetes de bibliotecas
+        dom
+        parsers
+        etree
+        sax
+
+    etree
+        ejemplo
+        # importar modulo
+        import xml.etree.ElementTree as x
+        # met parse crea objeto de clase ElementTree
+        archivo = x.parse("notas.xml")
+        # met getroot crea objeto de clase Element
+        datos = archivo.getroot()
+        # bucle para iterar obteniendo contenido con atributo .text
+        for fila in datos:
+            # recu solo de contenido con index
+            print(fila[2].text)
+
+Recolección con API
+    Application Programming Interface
+    son
+        bibliotecas con funciones 
+            para 
+                otras aplicaciones accedan
+    Protocolo API-REST 
+        API-Representational State Transfer
+        para
+            enviar y recibir datos
+                tipo
+                    XML o JSON
+                mediante
+                    HTTP
+        mediante funciones
+            POST
+            GET
+            PUT
+            DELETE
+        pueden requerir tokens
+
+joblib
+    serialización de objetos
+        compactar en secuencias de bytes para guardar y recuperar
+            import joblib
+            datos = ["nombre", "asignatura", "calificación"]
+            joblib.dump(datos, "notas.pk1")
+
+    deserialización
+        carga = joblib.load("notas.pk1")
+
+
+
+CSV import of three columns example
+
+import csv
+datos={“programaciónI”:[],
+    “cálculoI”:[],
+    “FísicaI”:[]}
+with open (“programaciónI.csv”,encoding=”utf8”) as notas:
+    csv_datos = csv.reader(notas)
+    for nota in csv_datos:
+    datos[“programaciónI”].append(nota[1])
+with open (“cálculoI.csv”,encoding=”utf8”) as notas:
+    csv_datos = csv.reader(notas)
+    for nota in csv_datos:
+    datos[“cálculoI”].append(nota[1])
+with open (“FísicaI.csv”,encoding=”utf8”) as notas:
+    csv_datos = csv.reader(notas)
+    for nota in csv_datos:
+    datos[“FísicaI”].append(nota[1])
