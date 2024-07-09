@@ -25,6 +25,12 @@ Bases de Datos No Relacionaes NoSQL con MongoDB
     Python libraries to interact with Mongo DB
         pymongo
             módulos para conectarse a MongoDB db
-            resuelv coneciones de red con nombres de dominio
+            resuelve conexiones de red con nombres de dominio
+        dnspython
+    Steps
+        install pymongo and dns libraries
+            !pip install pymongo dnspython
+        
+
         
 
